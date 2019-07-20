@@ -1,0 +1,4 @@
+---
+- include_tasks: versioncheck.yml
+  when: submodules_versioncheck|bool
+
