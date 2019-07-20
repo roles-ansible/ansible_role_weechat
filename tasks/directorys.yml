@@ -11,7 +11,7 @@
 - name: create plugin directories
   file:
     path: "{{ weechat_directory }}/{{ item.value }}/autoload"
-    state: directory'
+    state: directory
     owner: "{{ weechat_user }}"
     group: "{{ weechat_user }}"
   with_dict: '{{ weechat_plugin_languages }}'
