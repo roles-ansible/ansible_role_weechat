@@ -5,10 +5,14 @@ install_weechat: true
 # should we configure weechat
 configure_weechat: true
 
-weechat_user: 
+# user to install and use weechat
+weechat_user: "{{ ansible_user_id }}" 
 
 # where is our home direcotory for weechat
 weechat_directory: "/home/{{ weechat_user }}/.weechat"
+
+# plugins we want
+weechat_plugins: []
 
 # version check for this role?
 submodules_versioncheck: true
