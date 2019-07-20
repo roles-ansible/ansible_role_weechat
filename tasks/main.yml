@@ -2,3 +2,5 @@
 - include_tasks: versioncheck.yml
   when: submodules_versioncheck|bool
 
+- include_tasks: "install-{{ ansible_os_version|lower }}.yml"
+  when: install_weechat | bool

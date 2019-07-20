@@ -1,3 +1,6 @@
 ---
+# should we install weechat?
+install_weechat: true
+
 # version check for this role?
 submodules_versioncheck: true

@@ -1,0 +1,22 @@
+---
+- name: Add weechat repository gpg-key
+  become: true
+  apt_key:
+    keyserver: 'ha.pool.sks-keyservers.net'
+    id: '11E9DE8848F2B65222AA75B8D1820DB22A11534E'
+    state: present
+
+- name: add weechat repo
+  become: true
+  apt_repository:
+    repo: "deb https://weechat.org/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} main"
+    state: present
+    update_cache: yes
+
+- name: install weechat and plugins
+  become: true
+  apt:
+    name:
+     - weechat-curses
+     - weechat-plugins
+    state: present
