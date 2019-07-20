@@ -4,3 +4,6 @@
 
 - include_tasks: "install-{{ ansible_os_version|lower }}.yml"
   when: install_weechat | bool
+
+- include_tasks: directorys.yml
+  when: configure_weechat | bool

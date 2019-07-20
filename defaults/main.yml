@@ -2,5 +2,13 @@
 # should we install weechat?
 install_weechat: true
 
+# should we configure weechat
+configure_weechat: true
+
+weechat_user: 
+
+# where is our home direcotory for weechat
+weechat_directory: "/home/{{ weechat_user }}/.weechat"
+
 # version check for this role?
 submodules_versioncheck: true
