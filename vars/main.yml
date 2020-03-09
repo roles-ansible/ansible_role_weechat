@@ -9,5 +9,5 @@ weechat_plugin_languages:
   lua: lua
 
 # version management
-playbook_version_number: 1028 # should be over ninethousand
-playbook_version_path: 'role-weechat_chaos-bodensee_github.com.version' 
+playbook_version_number: 2048 # should be over ninethousand
+playbook_version_path: 'role-weechat_roles-ansible_github.com.version'
