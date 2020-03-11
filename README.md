@@ -1,16 +1,26 @@
- Ansible weechat rolle
+ ansible weechat role
 ==========================
-Ansible role to install and configure weechat:
+Ansible role to install and configure weechat.
 
- What can you do:
+[![WEECHAT](https://weechat.org/media/images/weechat_logo_large.png)](https://weechat.org/
+)
+WeeChat, the extensible chat client.
+
+ What can this role:
 -----------------
  - install weechat on Debian, Ubuntu, Archlinux or Fedora
  - ~~configure weechat~~
- - tba
+ - autostart via tmux and systemd
 
 
 ```txt
 WARNING
 
 It is work-in-progress. Be careful!
+
+MISSING
+- task for configurations
+- testing for all OS
+- docs
+- galaxy
 ```
