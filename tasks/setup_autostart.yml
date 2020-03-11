@@ -8,16 +8,19 @@
 
 - name: copy systemd service for weechat
   become: true
-  copy:
-    src: files/weechat.service
+  template:
+    src: templates/weechat.service
     dest: /etc/systemd/system/weechat.service
     owner: root
     group: root
     mode: '0644'
+  notify: systemctl restart weechat.service
 
-- name: start and enable weechat.service
+- name: enable weechat.service
   become: true
   systemd:
+    enabled: true
     state: started
     name: weechat.service
     daemon_reload: yes
+  notify: systemctl restart weechat.service

@@ -1,0 +1,7 @@
+---
+- name: systemctl restart weechat.service
+  become: true
+  systemd:
+    state: restarted
+    name: weechat.service
+    daemon_reload: yes

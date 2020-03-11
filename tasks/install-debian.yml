@@ -29,6 +29,6 @@
      - weechat-python
      - weechat-perl
      - weechat-lua
-     - weechaz-ruby
+     - weechat-ruby
      - weechat-doc
     state: present

@@ -2,6 +2,7 @@
 Description=Weechat Chat Client
 
 [Service]
+User={{ weechat.user }}
 Type=oneshot
 RemainAfterExit=yes
 ExecStart=/usr/bin/tmux -2 new-session -d -s weechat /usr/bin/weechat

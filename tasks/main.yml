@@ -10,7 +10,7 @@
   when: weechat.install | bool
 
 - include_tasks: configure_weechat.yml
-  when: configure_weechat | bool
+  when: weechat.configure | bool
 
 - include_tasks: setup_autostart.yml
   when: weechat.autostart | bool
