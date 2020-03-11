@@ -10,6 +10,9 @@ weechat:
   home_directory: "/home/{{ weechat_user }}/.weechat"
   # plugins we want
   plugins: []
+  # weechat gpg key for debian/ubuntu repo
+  gpg_id: '11E9DE8848F2B65222AA75B8D1820DB22A11534E'
+
 
 # version check for this role? (true is recomended)
 submodules_versioncheck: false
