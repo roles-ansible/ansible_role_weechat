@@ -9,5 +9,15 @@ weechat_plugin_languages:
   lua: lua
 
 # version management
-playbook_version_number: 2048 # should be over ninethousand
+playbook_version_number: 2049 # should be over ninethousand
 playbook_version_path: 'role-weechat_roles-ansible_github.com.version'
+
+# default values
+_weechat:
+  install: true
+  configure: true
+  user: "{{ ansible_user_id }}"
+  home_directory: "/home/{{ weechat_user }}/.weechat"
+  plugins: []
+
+

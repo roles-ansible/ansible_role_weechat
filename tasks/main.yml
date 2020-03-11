@@ -1,9 +1,13 @@
 ---
+- name: combine weechat variables
+  set_fact:
+    weechat: "{{ _weechat | combine(weechat, recursive=True) }}"
+
 - include_tasks: versioncheck.yml
   when: submodules_versioncheck|bool
 
 - include_tasks: "install-{{ ansible_os_family|lower }}.yml"
-  when: install_weechat | bool
+  when: weechat.install | bool
 
 #- include_tasks: plugins.yml
 #  when: configure_weechat | bool
