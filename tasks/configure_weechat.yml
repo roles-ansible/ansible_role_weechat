@@ -1,0 +1,3 @@
+---
+- include_tasks: configure_directorys.yml
+  when: configure_weechat | bool
