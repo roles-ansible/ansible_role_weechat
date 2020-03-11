@@ -9,8 +9,8 @@
 - include_tasks: "install-{{ ansible_os_family|lower }}.yml"
   when: weechat.install | bool
 
-- include_tasks: configure_weechat.yml
-  when: weechat.configure | bool
+- include_tasks: configure_plugins.yml
+  when: weechat.install_plugins | bool
 
 - include_tasks: setup_autostart.yml
   when: weechat.autostart | bool

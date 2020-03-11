@@ -1,4 +1,0 @@
----
-- include_tasks: configure_directorys.yml
-
-- include_tasks: configure_plugins.yml

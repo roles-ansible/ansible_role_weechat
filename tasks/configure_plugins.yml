@@ -1,4 +1,23 @@
 ---
+- name: create weechat directory
+  become: true
+  become_user: "{{ weechat.user }}"
+  file:
+    path: "{{ weechat.home_directory }}"
+    state: directory
+    owner: "{{ weechat.user }}"
+    mode: "0750"
+
+- name: create weechat plugins directory
+  become: true
+  become_user: "{{ weechat.user }}"
+  file:
+    path: "{{ weechat.home_directory }}/{{ item.value }}/autoload"
+    state: directory
+    owner: "{{ weechat.user }}"
+    mode: "0750"
+  with_dict: "{{ weechat_plugin_languages }}"
+
 - name: download weechat plugins
   get_url:
     url: 'https://weechat.org/files/scripts/{{ item }}'
