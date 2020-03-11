@@ -1,0 +1,23 @@
+---
+- name: install tmux to launch weechat
+  become: true
+  package:
+    name: tmux
+    state: present
+  when: weechat.install | bool
+
+- name: copy systemd service for weechat
+  become: true
+  copy:
+    src: files/weechat.service
+    dest: /etc/systemd/system/weechat.service
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: start and enable weechat.service
+  become: true
+  systemd:
+    state: started
+    name: weechat.service
+    daemon_reload: yes

@@ -11,3 +11,6 @@
 
 #- include_tasks: plugins.yml
 #  when: configure_weechat | bool
+
+- include_tasks: setup_autostart.yml
+  when: weechat.autostart | bool

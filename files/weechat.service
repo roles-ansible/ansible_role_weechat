@@ -1,0 +1,11 @@
+[Unit]
+Description=Weechat Chat Client
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/tmux -2 new-session -d -s weechat /usr/bin/weechat
+ExecStop=/usr/bin/tmux kill-session -t weechat
+
+[Install]
+WantedBy=network.target

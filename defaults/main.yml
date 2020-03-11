@@ -2,8 +2,10 @@
 weechat:
   # should we install weechat?
   install: true
+  # autostart weechat via systemd in a tmux session?
+  autostart: true
   # should we configure weechat
-  configure: true
+  configure: false
   # user to install and use weechat
   user: "{{ ansible_user_id }}"
   # where is our home direcotory for weechat
