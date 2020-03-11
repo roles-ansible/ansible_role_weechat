@@ -7,7 +7,7 @@ weechat:
   # should we install official weechat plugins
   install_plugins: false
   # custom weechat config (requires some manual interaction for long-term usage)
-  custom
+  use_custom_config: false
   # user to install and use weechat
   user: "{{ ansible_user_id }}"
   # where is our home direcotory for weechat

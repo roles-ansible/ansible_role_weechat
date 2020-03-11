@@ -21,3 +21,8 @@ _weechat:
   home_directory: "{{ ansible_env.HOME | default('/home/{{ weechat.user }}') }}/.weechat"
   plugins: []
   gpg_id: '11E9DE8848F2B65222AA75B8D1820DB22A11534E'
+  use_custom_config: false
+  costom_config:
+    private_repo: false
+    gen_ssh_key_pair: true
+
