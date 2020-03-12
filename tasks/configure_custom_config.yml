@@ -1,0 +1,44 @@
+---
+- name: create ssh key pair (if needed)
+  become_user: "{{ weechat.user }}"
+  become: true
+  openssh_keypair:
+    path: "{{ weechat.home_directory }}/.ssh/id_ed25519"
+    type: ed25519
+    owner: "{{ weechat.user }}"
+  register: ssh_key_pair
+  when: weechat.custom_config.gen_ssh_key_pair | bool
+
+- name: print ssh public key to user
+  pause:
+    prompt: |
+      We generated a new ssh key pair for you.
+      Please use the following public key as deployment key
+      to your private git repository with your own weechat config.
+
+      Private git repositorys are not public available and
+      you need some sort of authorisation method to verify
+      that you are allowed to clone your private repo.
+
+      Your ssh public key come here...
+
+
+      {{ ssh_key_pair.public_key }}
+
+
+      Please be aware, that this role do not commit or
+      push any local changes and you have to do this
+      manually by yourself.
+  when:
+    - weechat.custom_config.gen_ssh_key_pair | bool
+    - ssh_key_pair.changed
+
+- name: clone private git repository
+  become_user: "{{ weechat.user }}"
+  become: true
+  git:
+    repo: "{{ weechat.custom_config.private_repo }}"
+    dest: "{{ weechat.home_directory }}/.weechat"
+    version: master
+    accept_hostkey: yes
+  when: not weechat.custom_config.private_repo | bool

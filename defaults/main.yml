@@ -6,15 +6,22 @@ weechat:
   autostart: false
   # should we install official weechat plugins
   install_plugins: false
+  # custom weechat config (requires some manual interaction for long-term usage)
+  use_custom_config: false
   # user to install and use weechat
   user: "{{ ansible_user_id }}"
   # where is our home direcotory for weechat
-  home_directory: "{{ ansible_env.HOME | default('/home/{{ weechat.user }}') }}/.weechat"
+  home_directory: "{{ ansible_env.HOME | default('/home/{{ weechat.user }}') }}"
   # plugins we want
   plugins: []
   # weechat gpg key for debian/ubuntu repo
   gpg_id: '11E9DE8848F2B65222AA75B8D1820DB22A11534E'
-
+  # custom private config
+  custom_config:
+    # path to your custom weechat config (with plugins) git repo ( git@github.com:<your_name>/<your_weechat_config_repo>.git )
+    private_repo: false
+    # generate ssh key pair (if not available)
+    gen_ssh_key_pair: true
 
 # version check for this role? (true is recomended)
 submodules_versioncheck: false

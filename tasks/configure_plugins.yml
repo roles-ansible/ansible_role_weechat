@@ -3,7 +3,7 @@
   become: true
   become_user: "{{ weechat.user }}"
   file:
-    path: "{{ weechat.home_directory }}"
+    path: "{{ weechat.home_directory }}/.weechat"
     state: directory
     owner: "{{ weechat.user }}"
     mode: "0750"
@@ -12,7 +12,7 @@
   become: true
   become_user: "{{ weechat.user }}"
   file:
-    path: "{{ weechat.home_directory }}/{{ item.value }}/autoload"
+    path: "{{ weechat.home_directory }}/.weechat/{{ item.value }}/autoload"
     state: directory
     owner: "{{ weechat.user }}"
     mode: "0750"
@@ -21,12 +21,12 @@
 - name: download weechat plugins
   get_url:
     url: 'https://weechat.org/files/scripts/{{ item }}'
-    dest: "{{ weechat.home_directory }}/{{ weechat_plugin_languages[item.split('.',1)[-1]] }}/{{ item }}"
+    dest: "{{ weechat.home_directory }}/.weechat/{{ weechat_plugin_languages[item.split('.',1)[-1]] }}/{{ item }}"
   with_items: '{{ weechat.plugins }}'
 
 - name: symlinking plugins to autoload
   file:
-    src: "{{ weechat.home_directory }}/{{ weechat_plugin_languages[item.split('.',1)[-1]] }}/{{ item }}"
-    dest: "{{ weechat.home_directory }}/{{ weechat_plugin_languages[item.split('.',1)[-1]] }}/autoload/{{ item }}"
+    src: "{{ weechat.home_directory }}/.weechat/{{ weechat_plugin_languages[item.split('.',1)[-1]] }}/{{ item }}"
+    dest: "{{ weechat.home_directory }}/.weechat/{{ weechat_plugin_languages[item.split('.',1)[-1]] }}/autoload/{{ item }}"
     state: link
   with_items: '{{ weechat.plugins }}'
