@@ -8,7 +8,7 @@ Ansible role to install and configure weechat.
  What can this role:
 -----------------
  - install weechat on Debian, Ubuntu, Archlinux or Fedora
- - ~~configure weechat~~ *(in progress)*
+ - configure weechat
  - autostart via tmux and systemd
 
  Settings
