@@ -65,10 +65,9 @@ weechat:
 
 ```yaml
 weechat:
-  home_directory: "{{ ansible_env.HOME | default('/home/{{ weechat.user }}') }}/.weechat"
+  home_directory: "{{ ansible_env.HOME | default('/home/{{ weechat.user }}') }}"
 ```
 + the path where the weechat home is located. If the variable ``{{ ansible_env.HOME }}`` is not set it will use ``"/home/{{ weechat.user }}"`` as fallback.
-+ it points in the ``.weechat`` directory of your home.
 
 ```yaml
 weechat:
@@ -82,7 +81,7 @@ weechat:
     private_repo: false
 ```
 + The path to your git repo with your personal weechat config.
-+ This role clones the repo to the ``{{ weechat.home_directory }}`` destination. *(Also known al your local .weechat directory.)* It will fail if you already have files and/or folders in your local .weechat dorectory.
++ This role clones the repo to the ``"{{ weechat.home_directory }}/.weechat"`` directory. *(Also known al your local .weechat directory.)* It will fail if you already have files and/or folders in your local .weechat dorectory.
 + You have to add, commit and push the local changes in your local .weechat folder manually. Please be aware that it is a good idea to disable your log or at least add the weechatlog folder to your .gitignore file in your personal weechat config.
 
 ```yaml
@@ -90,7 +89,7 @@ weechat:
   custom_config:
     gen_ssh_key_pair: true
 ```
-+ ``weechat.custom_config.gen_ssh_key_pair: true``: We will generate a eleptic curve ssh key *(if it not already exist at ``"{{ weechat.home_directory }}/../.ssh/id_ed25519"``)* and print the public key to the prompt. This will give you the time to add this public key to your private git repo for your own weechat config as deploy key. This is required to download your private repo withour username/password. This requires that you set ``{{ weechat.custom_config.private_repo }}`` to the ssh accessable version of your git repo.
++ ``weechat.custom_config.gen_ssh_key_pair: true``: We will generate a eleptic curve ssh key *(if it not already exist at ``"{{ weechat.home_directory }}/.ssh/id_ed25519"``)* and print the public key to the prompt. This will give you the time to add this public key to your private git repo for your own weechat config as deploy key. This is required to download your private repo withour username/password. This requires that you set ``{{ weechat.custom_config.private_repo }}`` to the ssh accessable version of your git repo.
 + ``weechat.custom_config.gen_ssh_key_pair: false``: We do not manage access to the git repo with your weechat config.
 
 ```txt

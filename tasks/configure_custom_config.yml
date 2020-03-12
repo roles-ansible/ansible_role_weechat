@@ -3,7 +3,7 @@
   become_user: "{{ weechat.user }}"
   become: true
   openssh_keypair:
-    path: "{{ weechat.home_directory }}/../.ssh/id_ed25519"
+    path: "{{ weechat.home_directory }}/.ssh/id_ed25519"
     type: ed25519
     owner: "{{ weechat.user }}"
   register: ssh_key_pair
@@ -38,6 +38,7 @@
   become: true
   git:
     repo: "{{ weechat.custom_config.private_repo }}"
-    dest: "{{ weechat.home_directory }}"
+    dest: "{{ weechat.home_directory }}/.weechat"
     version: master
+    accept_hostkey: yes
   when: not weechat.custom_config.private_repo | bool
