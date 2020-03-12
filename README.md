@@ -61,7 +61,7 @@ weechat:
 weechat:
   user: "{{ ansible_user_id }}"
 ```
-+ the user to use weechat with. This value is used in the ``autostart`` task and the ``{{ weechat.home_directory }}`` variable
++ the user to use weechat with. This value is used in the ``autostart`` task, the ``custom_config`` task and the ``{{ weechat.home_directory }}`` variable
 
 ```yaml
 weechat:

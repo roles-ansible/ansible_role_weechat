@@ -1,0 +1,16 @@
+---
+- name: create ssh key pair (if needed)
+  become: true
+  become_user: "{{ weechat.user }}"
+  openssh_keypair:
+    path: "{{ weechat.home_directory }}/../.ssh/id_ed25519"
+    type: ed25519
+  register: ssh_key_pair
+  when: weechat.custom_config.gen_ssh_key_pair | bool
+
+- name: print ssh public key to user
+  pause:
+    prompt: "Your ssh public key:\n\n{{ ssh_key_pair.public_key }}\n\n"
+  when:
+    - weechat.custom_config.gen_ssh_key_pair | bool
+    - ssh_key_pair.changed
