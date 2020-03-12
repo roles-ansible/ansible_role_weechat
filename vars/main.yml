@@ -9,7 +9,7 @@ weechat_plugin_languages:
   lua: lua
 
 # version management
-playbook_version_number: 2055 # should be over ninethousand
+playbook_version_number: 2056 # should be over ninethousand
 playbook_version_path: 'role-weechat_roles-ansible_github.com.version'
 
 # default values
@@ -22,7 +22,7 @@ _weechat:
   plugins: []
   gpg_id: '11E9DE8848F2B65222AA75B8D1820DB22A11534E'
   use_custom_config: false
-  costom_config:
+  custom_config:
     private_repo: false
     gen_ssh_key_pair: true
 

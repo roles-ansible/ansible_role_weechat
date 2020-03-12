@@ -17,7 +17,7 @@ weechat:
   # weechat gpg key for debian/ubuntu repo
   gpg_id: '11E9DE8848F2B65222AA75B8D1820DB22A11534E'
   # custom private config
-  costom_config:
+  custom_config:
     # path to your custom weechat config (with plugins) git repo ( git@github.com:<your_name>/<your_weechat_config_repo>.git )
     private_repo: false
     # generate ssh key pair (if not available)
