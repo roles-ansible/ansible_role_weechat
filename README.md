@@ -1,4 +1,6 @@
- ansible weechat role
+[![Ansible Galaxy](https://raw.githubusercontent.com/chaos-bodensee/role_weechat/master/.github/galaxy.svg?sanitize=true)](https://galaxy.ansible.com/do1jlr/weechat) [![Build Status](https://travis-ci.org/chaos-bodensee/role_weechat.svg?branch=master)](https://travis-ci.org/chaos-bodensee/role_weechat) [![MIT License](https://raw.githubusercontent.com/chaos-bodensee/role_weechat/master/.github/license.svg?sanitize=true)](https://github.com/chaos-bodensee/role_weechat/blob/master/LICENSE)
+
+ansible weechat role
 ==========================
 Ansible role to install and configure weechat.
 
