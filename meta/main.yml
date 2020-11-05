@@ -1,0 +1,22 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: chaos-bodensee
+  description: Install WeeChat
+  license: "license (MIT)"
+  platforms:
+    - name: Debian
+      versions:
+        - all
+    - name: ArchLinux
+      versions:
+        - all
+    - name: Fedora 
+      versions:
+        - all
+    - name: Ubuntu 
+      versions:
+        - all
+  galaxy_tags:
+    - system
