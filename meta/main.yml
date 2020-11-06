@@ -2,7 +2,7 @@
 dependencies: []
 
 galaxy_info:
-  author: chaos-bodensee
+  author: L3D
   description: Install WeeChat
   license: "license (MIT)"
   platforms:
@@ -20,3 +20,4 @@ galaxy_info:
         - all
   galaxy_tags:
     - system
+    - weechat
