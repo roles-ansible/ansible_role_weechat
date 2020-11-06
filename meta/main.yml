@@ -12,10 +12,10 @@ galaxy_info:
     - name: ArchLinux
       versions:
         - all
-    - name: Fedora 
+    - name: Fedora
       versions:
         - all
-    - name: Ubuntu 
+    - name: Ubuntu
       versions:
         - all
   galaxy_tags:
