@@ -1,4 +1,10 @@
 ---
+- name: install apt-transport-https
+  become: true
+  apt:
+    name: apt-transport-https
+    state: present
+
 - name: Add weechat repository gpg-key
   become: true
   apt_key:

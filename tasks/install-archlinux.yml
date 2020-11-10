@@ -3,10 +3,4 @@
   package:
     name:
       - weechat
-      - weechat-plugins
-      - weechat-python
-      - weechat-perl
-      - weechat-lua
-      - weechaz-ruby
-      - weechat-doc
     state: present
