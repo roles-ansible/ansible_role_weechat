@@ -22,5 +22,5 @@
     enabled: true
     state: started
     name: weechat.service
-    daemon_reload: yes
+    daemon_reload: true
   notify: systemctl restart weechat.service

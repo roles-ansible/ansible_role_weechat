@@ -15,26 +15,26 @@
 - name: add weechat repo
   become: true
   apt_repository:
-    repo: "deb https://weechat.org/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} main"
+    repo: "deb {{ weechat__debian_weechat_repo }}"
     state: present
-    update_cache: yes
+    update_cache: true
 
 - name: add weechat repo-src
   become: true
   apt_repository:
-    repo: "deb-src https://weechat.org/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} main"
+    repo: "deb-src {{ weechat__debian_weechat_repo }}"
     state: present
-    update_cache: yes
+    update_cache: true
 
 - name: install recomended weechat packages
   become: true
   apt:
     name:
-     - weechat-curses
-     - weechat-plugins
-     - weechat-python
-     - weechat-perl
-     - weechat-lua
-     - weechat-ruby
-     - weechat-doc
+      - weechat-curses
+      - weechat-plugins
+      - weechat-python
+      - weechat-perl
+      - weechat-lua
+      - weechat-ruby
+      - weechat-doc
     state: present
