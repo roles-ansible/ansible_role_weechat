@@ -1,7 +1,6 @@
 ---
 - name: create weechat directory
   become: true
-  become_user: "{{ weechat.user }}"
   file:
     path: "{{ weechat.home_directory }}/.weechat"
     state: directory
@@ -10,7 +9,6 @@
 
 - name: create weechat plugins directory
   become: true
-  become_user: "{{ weechat.user }}"
   file:
     path: "{{ weechat.home_directory }}/.weechat/{{ item.value }}/autoload"
     state: directory

@@ -23,6 +23,8 @@ weechat:
     private_repo: false
     # generate ssh key pair (if not available)
     gen_ssh_key_pair: true
+    # the tag, commit or branch we should check out
+    version: 'main'
 
 # version check for this role? (true is recomended)
 submodules_versioncheck: false

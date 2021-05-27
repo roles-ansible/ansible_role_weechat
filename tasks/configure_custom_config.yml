@@ -1,8 +1,7 @@
 ---
 - name: create ssh key pair (if needed)
-  become_user: "{{ weechat.user }}"
   become: true
-  community.cryptop.openssh_keypair:
+  community.crypto.openssh_keypair:
     path: "{{ weechat.home_directory }}/.ssh/id_ed25519"
     type: ed25519
     owner: "{{ weechat.user }}"
@@ -34,16 +33,16 @@
     - ssh_key_pair.changed
 
 - name: clone or update private git repository
-  become_user: "{{ weechat.user }}"
   become: true
   block:
     - name: try to download/update git repo
       ansible.builtin.git:
         repo: "{{ weechat.custom_config.private_repo }}"
         dest: "{{ weechat.home_directory }}/.weechat"
-        version: master
+        version: "{{ weechat.custom_config.version | default ('main') }}"
         accept_hostkey: true
         update: true
+        ssh_opts: "-i {{ weechat.home_directory }}/.ssh/id_ed25519"
   rescue:
     - name: wait until you fixed remote git issues
       pause:
@@ -56,4 +55,13 @@
         version: master
         accept_hostkey: true
         update: true
+        ssh_opts: "-i {{ weechat.home_directory }}/.ssh/id_ed25519"
+  when: not weechat.custom_config.private_repo | bool
+
+- name: "change git repo ownwe to {{ weechat.user }}"
+  become: true
+  ansible.builtin.file:
+    path: "{{ weechat.home_directory }}/.weechat"
+    recurse: true
+    owner: "{{ weechat.user }}"
   when: not weechat.custom_config.private_repo | bool
