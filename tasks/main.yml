@@ -1,24 +1,20 @@
 ---
-- name: combine weechat variables
-  set_fact:
-    weechat: "{{ _weechat | combine(weechat, recursive=True) }}"
-
 - name: perform optinal versionscheck
   ansible.builtin.include_tasks: versioncheck.yml
   when: submodules_versioncheck|bool
 
 - name: install weechat
   ansible.builtin.include_tasks: "install-{{ ansible_os_family|lower }}.yml"
-  when: weechat.install | bool
+  when: weechat__install | bool
 
-- name: deploy weechat configuration
+- name: deploy weechat__configuration
   ansible.builtin.include_tasks: configure_custom_config.yml
-  when: weechat.use_custom_config | bool
+  when: weechat__use_custom_config | bool
 
-- name: install requirements for weechat plugins
+- name: install requirements for weechat__plugins
   ansible.builtin.include_tasks: configure_plugins.yml
-  when: weechat.install_plugins | bool
+  when: weechat__install_plugins | bool
 
-- name: setup weechat autostart
+- name: setup weechat__autostart
   ansible.builtin.include_tasks: setup_autostart.yml
-  when: weechat.autostart | bool
+  when: weechat__autostart | bool

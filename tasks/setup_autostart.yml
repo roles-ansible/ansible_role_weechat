@@ -4,7 +4,7 @@
   ansible.builtin.package:
     name: tmux
     state: present
-  when: weechat.install | bool
+  when: weechat__install | bool
 
 - name: copy systemd service for weechat
   become: true

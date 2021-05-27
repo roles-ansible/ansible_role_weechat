@@ -9,7 +9,7 @@
   become: true
   ansible.builtin.apt_key:
     keyserver: 'keys.openpgp.org'
-    id: "{{ weechat.gpg_id }}"
+    id: "{{ weechat__gpg_id }}"
     state: present
 
 - name: add weechat repo

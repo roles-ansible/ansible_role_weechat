@@ -1,30 +1,28 @@
 ---
-weechat:
   # should we install weechat?
-  install: true
+weechat__install: true
   # autostart weechat via systemd in a tmux session?
-  autostart: false
+weechat__autostart: false
   # should we install official weechat plugins
-  install_plugins: false
+weechat__install_plugins: false
   # custom weechat config (requires some manual interaction for long-term usage)
-  use_custom_config: false
+weechat__use_custom_config: false
   # user to install and use weechat
-  user: "{{ ansible_user_id }}"
+weechat__user: "{{ ansible_user_id }}"
   # where is our home direcotory for weechat
-  home_directory: "{{ ansible_env.HOME | default('/home/{{ weechat.user }}') }}"
+weechat__home_directory: "{{ ansible_env.HOME | default('/home/{{ weechat__user }}') }}"
   # plugins we want
-  plugins: []
+weechat__plugins: []
   # weechat gpg key for debian/ubuntu repo
-  gpg_id: '11E9DE8848F2B65222AA75B8D1820DB22A11534E'
-  # custom private config
-  custom_config:
-    # path to your custom weechat config (with plugins) git repo
-    # ( eg. git@github.com:<your_name>/<your_weechat_config_repo>.git )
-    private_repo: false
-    # generate ssh key pair (if not available)
-    gen_ssh_key_pair: true
-    # the tag, commit or branch we should check out
-    version: 'main'
+weechat__gpg_id: '11E9DE8848F2B65222AA75B8D1820DB22A11534E'
+
+# path to your custom weechat config (with plugins) git repo
+# ( eg. git@github.com:<your_name>/<your_weechat_config_repo>.git )
+weechat__custom_private_repo: false
+# generate ssh key pair (if not available)
+weechat__custom_gen_ssh_key_pair: true
+# the tag, commit or branch we should check out
+weechat__custom_version: 'main'
 
 # version check for this role? (true is recomended)
 submodules_versioncheck: false

@@ -9,21 +9,7 @@ weechat_plugin_languages:
   lua: lua
 
 # version management
-playbook_version_number: 4200  # should be over ninethousand
+playbook_version_number: 4220  # should be over ninethousand
 playbook_version_path: 'role-weechat_roles-ansible_github.com.version'
-
-# default values
-_weechat:
-  install: true
-  autostart: false
-  install_plugins: false
-  user: "{{ ansible_user_id }}"
-  home_directory: "{{ ansible_env.HOME | default('/home/{{ weechat.user }}') }}"
-  plugins: []
-  gpg_id: '11E9DE8848F2B65222AA75B8D1820DB22A11534E'
-  use_custom_config: false
-  custom_config:
-    private_repo: false
-    gen_ssh_key_pair: true
 
 weechat__debian_weechat_repo: "https://weechat.org/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} main"
