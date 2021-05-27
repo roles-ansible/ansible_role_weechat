@@ -1,6 +1,7 @@
 ---
 - name: install weechat if available
-  package:
+  become: true
+  ansible.builtin.package:
     name:
       - weechat
     state: present

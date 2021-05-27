@@ -2,7 +2,7 @@
 - name: create ssh key pair (if needed)
   become_user: "{{ weechat.user }}"
   become: true
-  openssh_keypair:
+  community.cryptop.openssh_keypair:
     path: "{{ weechat.home_directory }}/.ssh/id_ed25519"
     type: ed25519
     owner: "{{ weechat.user }}"
@@ -10,7 +10,7 @@
   when: weechat.custom_config.gen_ssh_key_pair | bool
 
 - name: print ssh public key to user
-  pause:
+  ansible.builtin.pause:
     prompt: |
       We generated a new ssh key pair for you.
       Please use the following public key as deployment key
@@ -38,22 +38,22 @@
   become: true
   block:
     - name: try to download/update git repo
-      git:
+      ansible.builtin.git:
         repo: "{{ weechat.custom_config.private_repo }}"
         dest: "{{ weechat.home_directory }}/.weechat"
         version: master
-        accept_hostkey: yes
-        update: yes
+        accept_hostkey: true
+        update: true
   rescue:
     - name: wait until you fixed remote git issues
       pause:
         prompt: "Please fix the issue with your git repository and try again"
 
     - name: try to download/update git repo again
-      git:
+      ansible.builtin.git:
         repo: "{{ weechat.custom_config.private_repo }}"
         dest: "{{ weechat.home_directory }}/.weechat"
         version: master
-        accept_hostkey: yes
-        update: yes
+        accept_hostkey: true
+        update: true
   when: not weechat.custom_config.private_repo | bool

@@ -9,7 +9,7 @@ weechat_plugin_languages:
   lua: lua
 
 # version management
-playbook_version_number: 4099  # should be over ninethousand
+playbook_version_number: 4199  # should be over ninethousand
 playbook_version_path: 'role-weechat_roles-ansible_github.com.version'
 
 # default values

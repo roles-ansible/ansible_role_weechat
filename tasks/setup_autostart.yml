@@ -1,14 +1,14 @@
 ---
 - name: install tmux to launch weechat
   become: true
-  package:
+  ansible.builtin.package:
     name: tmux
     state: present
   when: weechat.install | bool
 
 - name: copy systemd service for weechat
   become: true
-  template:
+  ansible.builtin.template:
     src: templates/weechat.service
     dest: /etc/systemd/system/weechat.service
     owner: root
@@ -18,7 +18,7 @@
 
 - name: enable weechat.service
   become: true
-  systemd:
+  ansible.builtin.systemd:
     enabled: true
     state: started
     name: weechat.service

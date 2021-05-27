@@ -1,34 +1,34 @@
 ---
 - name: install apt-transport-https
   become: true
-  apt:
+  ansible.builtin.apt:
     name: apt-transport-https
     state: present
 
 - name: Add weechat repository gpg-key
   become: true
-  apt_key:
+  ansible.builtin.apt_key:
     keyserver: 'keys.openpgp.org'
     id: "{{ weechat.gpg_id }}"
     state: present
 
 - name: add weechat repo
   become: true
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "deb {{ weechat__debian_weechat_repo }}"
     state: present
     update_cache: true
 
 - name: add weechat repo-src
   become: true
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "deb-src {{ weechat__debian_weechat_repo }}"
     state: present
     update_cache: true
 
 - name: install recomended weechat packages
   become: true
-  apt:
+  ansible.builtin.apt:
     name:
       - weechat-curses
       - weechat-plugins

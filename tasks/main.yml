@@ -3,17 +3,22 @@
   set_fact:
     weechat: "{{ _weechat | combine(weechat, recursive=True) }}"
 
-- include_tasks: versioncheck.yml
+- name: perform optinal versionscheck
+  ansible.builtin.include_tasks: versioncheck.yml
   when: submodules_versioncheck|bool
 
-- include_tasks: "install-{{ ansible_os_family|lower }}.yml"
+- name: install weechat
+  ansible.builtin.include_tasks: "install-{{ ansible_os_family|lower }}.yml"
   when: weechat.install | bool
 
-- include_tasks: configure_custom_config.yml
+- name: deploy weechat configuration
+  ansible.builtin.include_tasks: configure_custom_config.yml
   when: weechat.use_custom_config | bool
 
-- include_tasks: configure_plugins.yml
+- name: install requirements for weechat plugins
+  ansible.builtin.include_tasks: configure_plugins.yml
   when: weechat.install_plugins | bool
 
-- include_tasks: setup_autostart.yml
+- name: setup weechat autostart
+  ansible.builtin.include_tasks: setup_autostart.yml
   when: weechat.autostart | bool

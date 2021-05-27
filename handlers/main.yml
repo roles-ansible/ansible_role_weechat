@@ -1,7 +1,7 @@
 ---
 - name: systemctl restart weechat.service
   become: true
-  systemd:
+  ansible.builtin.systemd:
     state: restarted
     name: weechat.service
-    daemon_reload: yes
+    daemon_reload: true
