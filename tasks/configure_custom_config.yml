@@ -29,7 +29,7 @@
       push any local changes and you have to do this
       manually by yourself.
   when:
-    - weechat__custom_config.gen_ssh_key_pair | bool
+    - weechat__custom_gen_ssh_key_pair | bool
     - ssh_key_pair.changed
 
 - name: clone or update private git repository
