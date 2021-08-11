@@ -86,17 +86,6 @@ weechat__custom_version: main
 ```
 + ``weechat__custom_version: main``: set the git branch, tag, hash or version this role should use if you use a custom git repo for your weechat config.
 
-```txt
-WARNING
-
-It is work-in-progress. Be careful!
-
-MISSING
-- all task for configurations
-- testing for all OS
-- improved docs
-- galaxy
-```
 
  References and Inspiration:
 ----------------------
