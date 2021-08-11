@@ -58,7 +58,7 @@
         ssh_opts: "-i {{ weechat__home_directory }}/.ssh/id_ed25519"
   when: not weechat__custom_private_repo | bool
 
-- name: "change git repo ownwe to {{ weechat__user }}"
+- name: "change git repo owner to {{ weechat__user }}"
   become: true
   ansible.builtin.file:
     path: "{{ weechat__home_directory }}/.weechat"
