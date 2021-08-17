@@ -105,7 +105,5 @@ If you missing a feature, found a bug or have questions about this role please f
 
 
 ### testing
-This role is tested with [these github-action](https://github.com/search?q=topic%3Acheck-ansible+topic%3Agithub-actions+org%3Aroles-ansible&type=Repositories) tests for different versions of differen linux systems. Linting is tested via travis-ci and the  [ansible-lint action](https://github.com/marketplace/actions/ansible-lint).
+This role is tested with some of [these github-action](https://github.com/search?q=topic%3Acheck-ansible+topic%3Agithub-actions+org%3Aroles-ansible&type=Repositories) tests for different versions of differen linux systems. Linting is tested via the  [ansible-lint action](https://github.com/marketplace/actions/ansible-lint).
 If you want to find out more about our tests, please have a look at the github marketplace.
-
-
