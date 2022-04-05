@@ -1,7 +1,7 @@
 ---
 - name: create weechat directory
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ weechat__home_directory }}/.weechat"
     state: directory
     owner: "{{ weechat__user }}"
@@ -9,7 +9,7 @@
 
 - name: create weechat plugins directory
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ weechat__home_directory }}/.weechat/{{ item.value }}/autoload"
     state: directory
     owner: "{{ weechat__user }}"
@@ -17,13 +17,14 @@
   with_dict: "{{ weechat_plugin_languages }}"
 
 - name: download weechat plugins
-  get_url:
+  ansible.builtin.get_url:
     url: 'https://weechat.org/files/scripts/{{ item }}'
     dest: "{{ weechat__home_directory }}/.weechat/{{ weechat_plugin_languages[item.split('.',1)[-1]] }}/{{ item }}"
+    mode: '0644'
   with_items: '{{ weechat__plugins }}'
 
 - name: symlinking plugins to autoload
-  file:
+  ansible.builtin.file:
     src: "{{ weechat__home_directory }}/.weechat/{{ weechat_plugin_languages[item.split('.',1)[-1]] }}/{{ item }}"
     dest: "{{ weechat__home_directory }}/.weechat/{{ weechat_plugin_languages[item.split('.',1)[-1]] }}/autoload/{{ item }}"
     state: link
