@@ -45,7 +45,7 @@
         ssh_opts: "-i {{ weechat__home_directory }}/.ssh/id_ed25519"
   rescue:
     - name: wait until you fixed remote git issues
-      pause:
+      ansible.builtin.pause:
         prompt: "Please fix the issue with your git repository and try again"
 
     - name: try to download/update git repo again

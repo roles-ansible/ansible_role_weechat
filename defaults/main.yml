@@ -1,19 +1,19 @@
 ---
-  # should we install weechat?
+# should we install weechat?
 weechat__install: true
-  # autostart weechat via systemd in a tmux session?
+# autostart weechat via systemd in a tmux session?
 weechat__autostart: false
-  # should we install official weechat plugins
+# should we install official weechat plugins
 weechat__install_plugins: false
-  # custom weechat config (requires some manual interaction for long-term usage)
+# custom weechat config (requires some manual interaction for long-term usage)
 weechat__use_custom_config: false
-  # user to install and use weechat
+# user to install and use weechat
 weechat__user: "{{ ansible_user_id }}"
-  # where is our home direcotory for weechat
+# where is our home direcotory for weechat
 weechat__home_directory: "{{ ansible_env.HOME | default('/home/{{ weechat__user }}') }}"
-  # plugins we want
+# plugins we want
 weechat__plugins: []
-  # weechat gpg key for debian/ubuntu repo
+# weechat gpg key for debian/ubuntu repo
 weechat__gpg_id: '11E9DE8848F2B65222AA75B8D1820DB22A11534E'
 
 # path to your custom weechat config (with plugins) git repo
