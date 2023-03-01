@@ -1,8 +1,18 @@
 ---
-- name: install apt-transport-https
+- name: Update apt cache
   become: true
   ansible.builtin.apt:
-    name: apt-transport-https
+    cache_valid_time: 3600
+    update_cache: true
+  when:
+    - ansible_pkg_mgr == "apt"
+
+- name: Install apt-transport-https
+  become: true
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - gpg
     state: present
 
 - name: Add weechat repository gpg-key
@@ -12,21 +22,21 @@
     id: "{{ weechat__gpg_id }}"
     state: present
 
-- name: add weechat repo
+- name: Add weechat repo
   become: true
   ansible.builtin.apt_repository:
     repo: "deb {{ weechat__debian_weechat_repo }}"
     state: present
     update_cache: true
 
-- name: add weechat repo-src
+- name: Add weechat repo-src
   become: true
   ansible.builtin.apt_repository:
     repo: "deb-src {{ weechat__debian_weechat_repo }}"
     state: present
     update_cache: true
 
-- name: install recomended weechat packages
+- name: Install recomended weechat packages
   become: true
   ansible.builtin.apt:
     name:

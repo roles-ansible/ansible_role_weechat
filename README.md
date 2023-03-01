@@ -1,4 +1,5 @@
-[![Ansible Galaxy](https://raw.githubusercontent.com/chaos-bodensee/role_weechat/master/.github/galaxy.svg?sanitize=true)](https://galaxy.ansible.com/do1jlr/weechat) [![MIT License](https://raw.githubusercontent.com/chaos-bodensee/role_weechat/master/.github/license.svg?sanitize=true)](https://github.com/chaos-bodensee/role_weechat/blob/master/LICENSE)
+[![Ansible Galaxy](https://raw.githubusercontent.com/roles-ansible/ansible_role_weechat/main/.github/galaxy.svg)](https://galaxy.ansible.com/do1jlr/weechat)
+[![MIT License](https://raw.githubusercontent.com/roles-ansible/ansible_role_weechat/main/.github/license.svg?sanitize=true)](https://github.com/roles-ansible/ansible_role_weechat/blob/main/LICENSE)
 
 ansible weechat role
 ==========================

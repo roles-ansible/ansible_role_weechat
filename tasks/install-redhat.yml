@@ -1,5 +1,5 @@
 ---
-- name: install weechat if available
+- name: Install weechat if available
   become: true
   ansible.builtin.package:
     name:
