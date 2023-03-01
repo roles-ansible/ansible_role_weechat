@@ -1,5 +1,5 @@
 ---
-- name: systemctl restart weechat.service
+- name: Run systemctl restart weechat.service
   become: true
   ansible.builtin.systemd:
     state: restarted

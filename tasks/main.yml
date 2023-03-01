@@ -1,20 +1,20 @@
 ---
-- name: perform optinal versionscheck
+- name: Perform optinal versionscheck
   ansible.builtin.include_tasks: versioncheck.yml
   when: submodules_versioncheck|bool
 
-- name: install weechat
-  ansible.builtin.include_tasks: "install-{{ ansible_os_family|lower }}.yml"
+- name: Install weechat
+  ansible.builtin.include_tasks: "install-{{ ansible_os_family | lower }}.yml"
   when: weechat__install | bool
 
-- name: deploy weechat__configuration
+- name: Deploy weechat__configuration
   ansible.builtin.include_tasks: configure_custom_config.yml
   when: weechat__use_custom_config | bool
 
-- name: install requirements for weechat__plugins
+- name: Install requirements for weechat__plugins
   ansible.builtin.include_tasks: configure_plugins.yml
   when: weechat__install_plugins | bool
 
-- name: setup weechat__autostart
+- name: Setup weechat__autostart
   ansible.builtin.include_tasks: setup_autostart.yml
   when: weechat__autostart | bool

@@ -1,15 +1,15 @@
 ---
 # weechat plugin languages
 weechat_plugin_languages:
-  pl: perl
-  scm: guile
-  js: javascript
-  py: python
-  rb: ruby
-  lua: lua
+  pl: 'perl'
+  scm: 'guile'
+  js: 'javascript'
+  py: 'python'
+  rb: 'ruby'
+  lua: 'lua'
 
 # version management
-playbook_version_number: 4221  # should be over ninethousand
+playbook_version_number: 4222  # should be over ninethousand
 playbook_version_path: 'role-weechat_roles-ansible_github.com.version'
 
-weechat__debian_weechat_repo: "https://weechat.org/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} main"
+weechat__debian_weechat_repo: "https://weechat.org/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} main"

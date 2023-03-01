@@ -1,12 +1,12 @@
 ---
-- name: install tmux to launch weechat
+- name: Install tmux to launch weechat
   become: true
   ansible.builtin.package:
     name: tmux
     state: present
   when: weechat__install | bool
 
-- name: copy systemd service for weechat
+- name: Copy systemd service for weechat
   become: true
   ansible.builtin.template:
     src: templates/weechat.service
@@ -14,13 +14,13 @@
     owner: root
     group: root
     mode: '0644'
-  notify: systemctl restart weechat.service
+  notify: Run systemctl restart weechat.service
 
-- name: enable weechat.service
+- name: Enable weechat.service
   become: true
   ansible.builtin.systemd:
     enabled: true
     state: started
     name: weechat.service
     daemon_reload: true
-  notify: systemctl restart weechat.service
+  notify: Run systemctl restart weechat.service
