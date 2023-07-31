@@ -32,13 +32,38 @@
     - weechat__custom_gen_ssh_key_pair | bool
     - ssh_key_pair.changed
 
+- name: Add git repo to save.directory globally for root
+  become: true
+  community.general.git_config:
+    name: safe.directory
+    scope: global
+    value: "{{ weechat__home_directory }}/.weechat"
+  register: save_directory
+
+- name: "Add git repo to save.directory globally for {{ weechat__user }}"
+  become: true
+  community.general.git_config:
+    file: "{{ weechat__home_directory }}/.gitconfig"
+    name: safe.directory
+    scope: file
+    value: "{{ weechat__home_directory }}/.weechat"
+  register: save_user_directory
+
+- name: "Change git repo owner to {{ weechat__user }}"
+  become: true
+  ansible.builtin.file:
+    path: "{{ weechat__home_directory }}/.gitconfig"
+    recurse: false
+    owner: "{{ weechat__user }}"
+  changed_when: save_user_directory.changed | bool
+
 - name: "Change git repo owner to root"
   become: true
   ansible.builtin.file:
     path: "{{ weechat__home_directory }}/.weechat"
     recurse: true
     owner: "root"
-  changed_when: ssh_key_pair.changed
+  changed_when: ssh_key_pair.changed | bool or save_directory.changed | bool
   when: not weechat__custom_private_repo | bool
 
 - name: Clone or update private git repository
@@ -73,5 +98,5 @@
     path: "{{ weechat__home_directory }}/.weechat"
     recurse: true
     owner: "{{ weechat__user }}"
-  changed_when: ssh_key_pair.changed
+  changed_when: ssh_key_pair.changed | bool or save_directory.changed | bool
   when: not weechat__custom_private_repo | bool

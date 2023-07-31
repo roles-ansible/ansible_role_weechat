@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: weechat
-  author: do1jlr
+  author: l3d
   description: Install and optional configure weechat via ansible
   license: "MIT"
   min_ansible_version: '2.14'
