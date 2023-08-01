@@ -1,5 +1,6 @@
-[![Ansible Galaxy](https://raw.githubusercontent.com/roles-ansible/ansible_role_weechat/main/.github/galaxy.svg)](https://galaxy.ansible.com/do1jlr/weechat)
-[![MIT License](https://raw.githubusercontent.com/roles-ansible/ansible_role_weechat/main/.github/license.svg?sanitize=true)](https://github.com/roles-ansible/ansible_role_weechat/blob/main/LICENSE)
+[![Ansible Galaxy](https://ansible.l3d.space/svg/l3d.weechat.svg)](https://galaxy.ansible.com/l3d/weechat)
+[![BSD-3 Clause](https://ansible.l3d.space/svg/l3d.weechat_license.svg)](LICENSE)
+[![Maintainance](https://ansible.l3d.space/svg/l3d.weechat_maintainance.svg)](https://ansible.l3d.space/#l3d.weechat)
 
 ansible weechat role
 ==========================
@@ -11,7 +12,7 @@ Ansible role to install and configure weechat.
  What can this role:
 -----------------
  - install weechat on Debian, Ubuntu, Archlinux or Fedora
- - configure weechat
+ - add configuration from private git repo
  - autostart via tmux and systemd
 
  Settings
@@ -100,11 +101,8 @@ If you missing a feature, found a bug or have questions about this role please f
 
  LICENSE
 ----------
-[MIT License](https://github.com/chaos-bodensee/role_weechat/blob/master/LICENSE)<br/>
-+ ``Copyright (c) 2019 L3D``
-+  The complete list of awesome contributros can be found [here](https://github.com/chaos-bodensee/role_weechat/graphs/contributors).
-
-
-### testing
-This role is tested with some of [these github-action](https://github.com/search?q=topic%3Acheck-ansible+topic%3Agithub-actions+org%3Aroles-ansible&type=Repositories) tests for different versions of differen linux systems. Linting is tested via the  [ansible-lint action](https://github.com/marketplace/actions/ansible-lint).
-If you want to find out more about our tests, please have a look at the github marketplace.
+[![MIT License](https://ansible.l3d.space/svg/l3d.weechat_license.svg)](LICENSE)
+```
+Copyright (c) 2019 L3D <l3d@c3woc.de>
+```
+*The complete list of awesome contributros can be found [here](https://github.com/chaos-bodensee/role_weechat/graphs/contributors).*
