@@ -95,6 +95,12 @@ weechat__custom_version: main
  + Some parts of the Weechat configuration is inspired by [github.com/irth/ansible-role-weechat](https://github.com/irth/ansible-role-weechat.git) but written in a complete different way. Some other is completly different.
  + Autostart and systemd is inspired by [ubuntu wiki](https://wiki.ubuntuusers.de/Howto/systemd_Service_Unit_Beispiel/) and [ansible docs](https://docs.ansible.com/ansible/latest/modules/systemd_module.html).
 
+## Requirements
+The ``community.general`` and ``community.crypto`` collections are required for some parts of this ansible role.
+You can install it with this command:
+```bash
+ansible-galaxy collection install -r requirements.yml --upgrade
+```
  Contribute
 ------------
 If you missing a feature, found a bug or have questions about this role please feel free to open a git issue. Or - even better - create a pull request.
