@@ -21,11 +21,13 @@
     url: 'https://weechat.org/files/scripts/{{ item }}'
     dest: "{{ weechat__home_directory }}/.weechat/{{ weechat_plugin_languages[item.split('.', 1)[-1]] }}/{{ item }}"
     mode: '0644'
-  with_items: '{{ weechat__plugins }}'
+  loop: '{{ weechat__plugins }}'
 
 - name: Symlinking plugins to autoload
   ansible.builtin.file:
     src: "{{ weechat__home_directory }}/.weechat/{{ weechat_plugin_languages[item.split('.', 1)[-1]] }}/{{ item }}"
     dest: "{{ weechat__home_directory }}/.weechat/{{ weechat_plugin_languages[item.split('.', 1)[-1]] }}/autoload/{{ item }}"
     state: link
-  with_items: '{{ weechat__plugins }}'
+    mode: 0644
+    owner: root
+  loop: '{{ weechat__plugins }}'

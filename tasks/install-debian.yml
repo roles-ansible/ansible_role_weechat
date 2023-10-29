@@ -10,41 +10,61 @@
 - name: Install apt-transport-https
   become: true
   ansible.builtin.apt:
-    name:
-      - apt-transport-https
-      - gpg
-    state: present
+    name: "{{ item }}"
+    state: 'present'
+  loop:
+    - 'apt-transport-https'
+    - 'gpg'
 
 - name: Add weechat repository gpg-key
   become: true
   ansible.builtin.apt_key:
     keyserver: 'keys.openpgp.org'
     id: "{{ weechat__gpg_id }}"
-    state: present
+    state: 'present'
+
+- name: Create /usr/share/keyrings directory
+  become: true
+  ansible.builtin.file:
+    path: '/usr/share/keyrings'
+    state: 'directory'
+    owner: 'root'
+    group: 'root'
+    mode: '0755'
+
+- name: Import WeeChat GPG key
+  become: true
+  ansible.builtin.get_url:
+    url: "https://keys.openpgp.org/vks/v1/by-fingerprint/{{ weechat__gpg_id }}"
+    dest: '/usr/share/keyrings/weechat-archive-keyring.gpg'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
 
 - name: Add weechat repo
   become: true
   ansible.builtin.apt_repository:
-    repo: "deb {{ weechat__debian_weechat_repo }}"
-    state: present
+    repo: "deb [signed-by=/usr/share/keyrings/weechat-archive-keyring.gpg] {{ weechat__debian_weechat_repo }}"
+    state: 'present'
     update_cache: true
 
 - name: Add weechat repo-src
   become: true
   ansible.builtin.apt_repository:
-    repo: "deb-src {{ weechat__debian_weechat_repo }}"
-    state: present
+    repo: "deb-src [signed-by=/usr/share/keyrings/weechat-archive-keyring.gpg] {{ weechat__debian_weechat_repo }}"
+    state: 'present'
     update_cache: true
 
 - name: Install recomended weechat packages
   become: true
   ansible.builtin.apt:
-    name:
-      - weechat-curses
-      - weechat-plugins
-      - weechat-python
-      - weechat-perl
-      - weechat-lua
-      - weechat-ruby
-      - weechat-doc
-    state: present
+    name: "{{ item }}"
+    state: 'present'
+  loop:
+    - 'weechat-curses'
+    - 'weechat-plugins'
+    - 'weechat-python'
+    - 'weechat-perl'
+    - 'weechat-lua'
+    - 'weechat-ruby'
+    - 'weechat-doc'

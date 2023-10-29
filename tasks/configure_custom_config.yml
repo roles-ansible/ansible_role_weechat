@@ -1,9 +1,9 @@
 ---
-- name: Create ssh key pair (if needed)
+- name: Create ssh key pair (if needed)  # noqa: H1901
   become: true
   community.crypto.openssh_keypair:
     path: "{{ weechat__home_directory }}/.ssh/id_ed25519"
-    type: ed25519
+    type: 'ed25519'
     owner: "{{ weechat__user }}"
   register: ssh_key_pair
   when: weechat__custom_gen_ssh_key_pair | bool
@@ -32,7 +32,7 @@
     - weechat__custom_gen_ssh_key_pair | bool
     - ssh_key_pair.changed
 
-- name: Add git repo to save.directory globally for root
+- name: Add git repo to save.directory globally for root  # noqa: H1901
   become: true
   community.general.git_config:
     name: safe.directory
@@ -40,7 +40,7 @@
     value: "{{ weechat__home_directory }}/.weechat"
   register: save_directory
 
-- name: "Add git repo to save.directory globally for {{ weechat__user }}"
+- name: "Add git repo to save.directory globally for {{ weechat__user }}"  # noqa: H1901
   become: true
   community.general.git_config:
     file: "{{ weechat__home_directory }}/.gitconfig"
@@ -55,6 +55,7 @@
     path: "{{ weechat__home_directory }}/.gitconfig"
     recurse: false
     owner: "{{ weechat__user }}"
+    mode: 'u=rwX,g=rX,o='
   changed_when: save_user_directory.changed | bool
 
 - name: "Change git repo owner to root"
@@ -63,6 +64,8 @@
     path: "{{ weechat__home_directory }}/.weechat"
     recurse: true
     owner: "root"
+    group: 'root'
+    mode: 'u=rwX,g=rX,o='
   changed_when: ssh_key_pair.changed | bool or save_directory.changed | bool
   when: not weechat__custom_private_repo | bool
 
@@ -98,5 +101,7 @@
     path: "{{ weechat__home_directory }}/.weechat"
     recurse: true
     owner: "{{ weechat__user }}"
+    group: 'root'
+    mode: 'u=rwX,g=rX,o='
   changed_when: ssh_key_pair.changed | bool or save_directory.changed | bool
   when: not weechat__custom_private_repo | bool
