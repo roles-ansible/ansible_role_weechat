@@ -34,12 +34,11 @@
 
 - name: Import WeeChat GPG key
   become: true
-  ansible.builtin.get_url:
-    url: "https://keys.openpgp.org/vks/v1/by-fingerprint/{{ weechat__gpg_id }}"
-    dest: '/usr/share/keyrings/weechat-archive-keyring.gpg'
-    owner: 'root'
-    group: 'root'
-    mode: '0644'
+  ansible.builtin.apt_key:
+    keyserver: "hkps://keys.openpgp.org"
+    id: "{{ weechat__gpg_id }}"
+    keyring: '/usr/share/keyrings/weechat-archive-keyring.gpg'
+    state: 'present'
 
 - name: Add weechat repo
   become: true
